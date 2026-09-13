@@ -60,7 +60,7 @@
         }
         .btn-print:hover { transform: scale(1.05); }
 
-        /* تعديل تجاوب الصفحة للشاشات العادية والموبايل */
+        /* أبعاد الصفحة للشاشات العادية */
         .page {
             width: 100%;
             max-width: 210mm;
@@ -263,7 +263,7 @@
             box-shadow: 0 2px 5px rgba(212, 175, 55, 0.2);
         }
 
-        /* إطار الصورة */
+        /* إطار الصورة (أبعاد افتراضية) */
         .product-image-container {
             width: 85mm;
             max-width: 60vw;
@@ -319,6 +319,7 @@
             padding-top: 4px; font-size: 0.7rem; color: var(--text-muted); display: flex; justify-content: space-between; z-index: 3;
         }
 
+        /* تجاوب العرض العادي على الموبايل (أثناء التصفح) */
         @media (max-width: 600px) {
             body { padding: 10px 5px; }
             .page {
@@ -344,7 +345,7 @@
         }
 
         /* -------------------------------------------------------------
-           إعدادات الطباعة الخاصة والاحترافية (تضمن أن يخرج الـ PDF بأبعاد A4 دقيقة)
+           إعدادات التصدير إلى PDF (تفرض أبعاد A4 كاملة حتى عند التصدير من الموبايل)
         ------------------------------------------------------------- */
         @page {
             size: A4 portrait;
@@ -357,7 +358,7 @@
                 padding: 0 !important;
                 margin: 0 !important;
                 width: 210mm !important;
-                height: auto !important;
+                height: 297mm !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
@@ -369,7 +370,10 @@
             .page {
                 width: 210mm !important;
                 height: 297mm !important;
-                max-height: 297mm !important;
+                max-width: none !important;
+                max-height: none !important;
+                min-height: auto !important;
+                aspect-ratio: auto !important;
                 margin: 0 !important;
                 padding: 12mm 15mm !important;
                 box-shadow: none !important;
@@ -387,11 +391,26 @@
                 break-after: avoid !important;
             }
 
+            /* تكبير الصور والإطارات بشكل واضح في الـ PDF */
             .product-image-container {
-                width: 85mm !important;
-                height: 85mm !important;
+                width: 95mm !important;
+                height: 95mm !important;
                 max-width: none !important;
                 max-height: none !important;
+                margin: 4mm 0 !important;
+            }
+
+            /* تكبير مربع الوصف والعناوين في الـ PDF */
+            .product-title {
+                font-size: 1.15rem !important;
+                margin-bottom: 8px !important;
+            }
+
+            .product-description {
+                font-size: 0.95rem !important;
+                padding: 10px 14px !important;
+                line-height: 1.5 !important;
+                width: 100% !important;
             }
         }
     </style>
@@ -452,7 +471,7 @@
             if (upper.includes("PAD")) 
                 return "وسادات قطنية ناعمة ومشبعة بمحلول علاج مركز، تعمل كخطوة أولى لتنقية البشرة، تقشير الخلايا الميتة بلطف، وترطيبها الفوري لتكون جاهزة لامتصاص العناية التالية.";
             if (upper.includes("HAIR") || upper.includes("SHAMPOO") || upper.includes("TONIC")) 
-                return "عناية علاجية متتقدمة ومتكاملة لفروة الرأس والبصيلات، تغذي الجذور بعمق، تقلل التساقط بشكل ملحوظ، وتمنح الشعر قوة وكثافة ولمعاناً صحياً جذاباً.";
+                return "عناية علاجية متتقدمة ومتكاملة لفروة الرأس والبصيلات، تغذي الجذور بعمق،تقلل التساقط بشكل ملحوظ، وتمنح الشعر قوة وكثافة ولمعاناً صحياً جذاباً.";
             if (upper.includes("HAND") || upper.includes("FOOT") || upper.includes("BODY")) 
                 return "كريم مرطب غني بالمغذيات الطبيعية لليدين والجسم، يمتصه الجلد بسرعة فائقة ليعالج الجفاف والخشونة، ويترك البشرة ناعمة كالحرير ومعطرة برائحة لطيفة.";
             if (upper.includes("SOOTHING GEL")) 
