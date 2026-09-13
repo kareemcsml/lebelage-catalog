@@ -28,6 +28,7 @@
             background-color: #2c2c2c;
             color: var(--text-dark);
             font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
         }
 
         body {
@@ -59,9 +60,12 @@
         }
         .btn-print:hover { transform: scale(1.05); }
 
+        /* تعديل تجاوب الصفحة للشاشات العادية والموبايل */
         .page {
-            width: 210mm;
-            height: 297mm;
+            width: 100%;
+            max-width: 210mm;
+            min-height: 297mm;
+            aspect-ratio: 210 / 297;
             background-color: var(--bg-color);
             padding: 12mm 15mm;
             margin-bottom: 25px;
@@ -149,9 +153,9 @@
 
         /* الشعار */
         .brand-logo-svg {
-            width: 340px;
+            width: 100%;
+            max-width: 340px;
             height: auto;
-            max-width: 98%;
             margin-bottom: 5px;
         }
 
@@ -262,7 +266,9 @@
         /* إطار الصورة */
         .product-image-container {
             width: 85mm;
+            max-width: 60vw;
             height: 85mm;
+            max-height: 60vw;
             border-radius: 50%;
             background: #FFFFFF;
             padding: 5px;
@@ -314,35 +320,35 @@
         }
 
         @media (max-width: 600px) {
-            body { padding: 5px 0; }
+            body { padding: 10px 5px; }
             .page {
-                padding: 8mm 6mm;
+                padding: 10px 12px;
                 margin-bottom: 15px;
-                height: auto;
                 min-height: auto;
+                aspect-ratio: auto;
             }
-            .page-border { top: 3mm; bottom: 3mm; left: 3mm; right: 3mm; }
-            .cover-border { top: 4mm; bottom: 4mm; left: 4mm; right: 4mm; }
-            .corner-tl { top: 4mm; left: 4mm; }
-            .corner-tr { top: 4mm; right: 4mm; }
-            .corner-bl { bottom: 4mm; left: 4mm; }
-            .corner-br { bottom: 4mm; right: 4mm; }
+            .page-border { top: 4px; bottom: 4px; left: 4px; right: 4px; }
+            .cover-border { top: 6px; bottom: 6px; left: 6px; right: 6px; }
+            .corner-tl { top: 6px; left: 6px; font-size: 1.2rem; }
+            .corner-tr { top: 6px; right: 6px; font-size: 1.2rem; }
+            .corner-bl { bottom: 6px; left: 6px; font-size: 1.2rem; }
+            .corner-br { bottom: 6px; right: 6px; font-size: 1.2rem; }
             
-            .product-image-container { width: 70mm; height: 70mm; }
-            .product-title { font-size: 0.95rem; }
-            .product-description { font-size: 0.78rem; padding: 6px 10px; }
+            .product-image-container { width: 160px; height: 160px; }
+            .product-title { font-size: 0.88rem; }
+            .product-description { font-size: 0.75rem; padding: 6px 8px; }
             .print-btn-container { top: 10px; left: 10px; }
-            .btn-print { padding: 8px 16px; font-size: 0.85rem; }
-            .contact-info-container { padding: 8px 12px; }
-            .contact-item { font-size: 0.75rem; }
+            .btn-print { padding: 8px 16px; font-size: 0.8rem; }
+            .contact-info-container { padding: 8px 10px; }
+            .contact-item { font-size: 0.72rem; gap: 6px; }
         }
 
         /* -------------------------------------------------------------
-           إعدادات الطباعة الخاصة والاحترافية وحل مشكلة الصفحات والـ PDF
+           إعدادات الطباعة الخاصة والاحترافية (تضمن أن يخرج الـ PDF بأبعاد A4 دقيقة)
         ------------------------------------------------------------- */
         @page {
             size: A4 portrait;
-            margin: 0; /* لإخفاء رأس وذيل المتصفح الافتراضي كالأسماء والتاريخ والأرقام */
+            margin: 0;
         }
 
         @media print {
@@ -380,6 +386,13 @@
                 page-break-after: avoid !important;
                 break-after: avoid !important;
             }
+
+            .product-image-container {
+                width: 85mm !important;
+                height: 85mm !important;
+                max-width: none !important;
+                max-height: none !important;
+            }
         }
     </style>
 </head>
@@ -389,9 +402,8 @@
         <button class="btn-print" onclick="window.print()">تصدير الكتالوج إلى PDF</button>
     </div>
 
-    <div id="catalogContainer"></div>
+    <div id="catalogContainer" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
 
-    <!-- رسم الشعار المصحح بالكامل بدون قص مع كلمة Daraa كاملة وبدون الخط السفلي -->
     <template id="logoTemplate">
         <svg class="brand-logo-svg" viewBox="0 0 620 140" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- L -->
@@ -705,7 +717,7 @@
                     <div class="page-border-inner"></div>
                 </div>
                 <div class="header">
-                    <div style="transform: scale(0.65); transform-origin: top center; margin-bottom: -25px;">
+                    <div style="transform: scale(0.65); transform-origin: top center; margin-bottom: -25px; width: 100%; display: flex; justify-content: center;">
                         ${logoSvgContent}
                     </div>
                     <div class="brand-korean">르베라쥬</div>
