@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEBELAGE - Luxury Product Catalog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>LEBELAGE Daraa - Luxury Product Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #FAF8F5;
@@ -55,7 +56,6 @@
         }
         .btn-print:hover { transform: scale(1.05); }
 
-        /* الشاشات والعرض الافتراضي (الموبايل والكمبيوتر) */
         .page {
             width: 100%;
             max-width: 210mm;
@@ -72,7 +72,7 @@
             box-sizing: border-box;
         }
 
-        /* إطار فاخر ملكي */
+        /* إطار فاخر */
         .page-border {
             position: absolute;
             top: 6mm; bottom: 6mm; left: 6mm; right: 6mm;
@@ -88,7 +88,7 @@
             opacity: 0.3;
         }
 
-        /* الزخارف الملكية الفخمة */
+        /* الزخارف */
         .royal-corner {
             position: absolute;
             font-size: 1.8rem;
@@ -103,14 +103,14 @@
         .corner-bl { bottom: 8mm; left: 8mm; }
         .corner-br { bottom: 8mm; right: 8mm; }
 
-        /* صفحات الغلاف */
+        /* الغلاف */
         .cover-page {
-            background: linear-gradient(135deg, #1A1A1A 0%, #2c2c2c 100%);
-            color: #FAF8F5;
+            background: linear-gradient(135deg, #FAF8F5 0%, #F5EFE6 100%);
+            color: var(--text-dark);
             justify-content: center;
             align-items: center;
             text-align: center;
-            border: 4px double var(--gold-primary);
+            border: 2px solid var(--gold-primary);
         }
 
         .cover-border {
@@ -123,7 +123,7 @@
         }
         .cover-border-inner {
             width: 100%; height: 100%;
-            border: 1px solid var(--gold-secondary);
+            border: 1px solid var(--gold-dark);
             opacity: 0.4;
         }
 
@@ -133,90 +133,121 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 140mm;
+            max-width: 160mm;
             padding: 0 10px;
         }
 
-        .cover-big-icon {
-            font-size: 3rem;
-            color: var(--gold-primary);
+        /* الشعار */
+        .brand-logo-svg {
+            width: 360px;
+            height: auto;
+            max-width: 98%;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-        }
-
-        .cover-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary), #FFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            margin-bottom: 5px;
         }
 
         .cover-korean {
             font-size: 1.2rem;
-            color: var(--gold-secondary);
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-weight: 700;
+            color: #333333;
+            letter-spacing: 4px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .cover-divider {
             color: var(--gold-primary);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             letter-spacing: 8px;
-            margin: 15px 0;
+            margin: 8px 0;
         }
 
         .cover-subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 4px;
-            color: #E8E2D5;
+            color: var(--text-dark);
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
 
         .cover-desc {
-            font-size: 0.9rem;
-            color: #D0C5B4;
-            line-height: 1.7;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 15px 0;
-            margin-bottom: 20px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 10px 0;
+            margin-bottom: 12px;
         }
 
         .cover-badge {
             background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
-            color: #1A1A1A;
-            padding: 10px 25px;
+            color: #FFFFFF;
+            padding: 6px 22px;
             border-radius: 30px;
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
             border: 1px solid var(--gold-secondary);
         }
 
-        /* تنسيق الصفحات الداخلية للمنتجات */
-        .header { text-align: center; width: 100%; margin-top: 2mm; z-index: 3; }
-        .brand-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary), #B8860B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+        /* قسم بيانات التواصل */
+        .contact-info-container {
+            margin-top: 15px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--gold-primary);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 140mm;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: right;
         }
-        .brand-korean { font-size: 0.85rem; color: var(--gold-dark); margin-top: 2px; font-weight: 700; }
+
+        .contact-item {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .contact-icon {
+            font-size: 1.1rem;
+            width: 22px;
+            text-align: center;
+        }
+
+        .icon-location { color: #d9534f; }
+        .icon-whatsapp { color: #25D366; }
+        .icon-facebook { color: #1877F2; }
+        .icon-instagram { color: #E4405F; }
+        .icon-email { color: #EA4335; }
+
+        .contact-item a {
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold-primary);
+            text-decoration: underline;
+        }
+
+        /* هيدر الصفحة */
+        .header { text-align: center; width: 100%; margin-top: 2mm; z-index: 3; display: flex; flex-direction: column; align-items: center; }
+        .brand-korean { font-size: 0.85rem; color: var(--gold-dark); font-weight: 700; }
         .brand-sub { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
 
         .badge-container {
-            width: 90%; display: flex; justify-content: space-between; align-items: center; margin-top: 2mm; z-index: 3;
+            width: 90%; display: flex; justify-content: space-between; align-items: center; margin-top: 1mm; z-index: 3;
         }
         .badge-code, .badge-no {
             background: #FFF; border: 1px solid var(--gold-primary); color: var(--gold-dark);
@@ -224,23 +255,26 @@
             box-shadow: 0 2px 5px rgba(212, 175, 55, 0.2);
         }
 
+        /* إطار الصورة */
         .product-image-container {
-            width: 100%;
-            max-width: 90mm;
-            aspect-ratio: 1 / 1;
+            width: 95mm;
+            height: 95mm;
             border-radius: 50%;
             background: #FFFFFF;
             padding: 6px;
-            box-shadow: 0 12px 35px rgba(184, 134, 11, 0.18);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
             display: flex; align-items: center; justify-content: center;
-            position: relative; margin: 4mm 0;
+            position: relative; margin: 2mm 0;
+            border: 2px solid var(--gold-primary);
             overflow: hidden;
-            border: 3px double var(--gold-primary);
             z-index: 3;
         }
 
         .product-image {
-            width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%;
         }
 
         .details-container {
@@ -268,20 +302,19 @@
             padding: 4px 20px; border-radius: 25px;
             box-shadow: 0 4px 12px rgba(153, 101, 21, 0.25);
         }
-        .price-tag { font-size: 1.4rem; color: #FFFFFF; font-weight: 800; font-family: 'Cinzel', serif; }
+        .price-tag { font-size: 1.4rem; color: #FFFFFF; font-weight: 800; }
 
         .footer {
             width: 90%; text-align: center; border-top: 1px solid var(--border-color);
             padding-top: 6px; font-size: 0.7rem; color: var(--text-muted); display: flex; justify-content: space-between; z-index: 3;
         }
 
-        /* تحسينات خاصة بالموبايل لتجنب قص أي أطراف */
         @media (max-width: 600px) {
             body { padding: 5px 0; }
             .page {
                 padding: 8mm 6mm;
                 margin-bottom: 15px;
-                min-height: auto; /* يتمدد التكافئ حسب محتوى الشاشة */
+                min-height: auto;
             }
             .page-border { top: 3mm; bottom: 3mm; left: 3mm; right: 3mm; }
             .cover-border { top: 4mm; bottom: 4mm; left: 4mm; right: 4mm; }
@@ -290,16 +323,15 @@
             .corner-bl { bottom: 4mm; left: 4mm; }
             .corner-br { bottom: 4mm; right: 4mm; }
             
-            .brand-title { font-size: 1.5rem; }
-            .cover-title { font-size: 2rem; }
-            .product-image-container { max-width: 65mm; }
+            .product-image-container { width: 70mm; height: 70mm; }
             .product-title { font-size: 0.95rem; }
             .product-description { font-size: 0.78rem; padding: 6px 10px; }
             .print-btn-container { top: 10px; left: 10px; }
             .btn-print { padding: 8px 16px; font-size: 0.85rem; }
+            .contact-info-container { padding: 8px 12px; }
+            .contact-item { font-size: 0.75rem; }
         }
 
-        /* الطباعة والتصدير لـ PDF ثابت A4 */
         @media print {
             body { background-color: #FFF; padding: 0; }
             .print-btn-container { display: none !important; }
@@ -312,7 +344,7 @@
                 page-break-inside: avoid !important;
                 padding: 12mm 15mm !important;
             }
-            .product-image-container { width: 105mm !important; height: 105mm !important; }
+            .product-image-container { width: 100mm !important; height: 100mm !important; }
         }
     </style>
 </head>
@@ -323,6 +355,31 @@
     </div>
 
     <div id="catalogContainer"></div>
+
+    <!-- رسم الشعار المصحح بالكامل بدون قص مع كلمة Daraa كاملة وبدون الخط السفلي -->
+    <template id="logoTemplate">
+        <svg class="brand-logo-svg" viewBox="0 0 620 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- L -->
+            <path d="M10 20 H30 V72 H68 V88 H10 Z" fill="#000000"/>
+            <!-- E -->
+            <path d="M78 20 H128 V35 H98 V46 H123 V60 H98 V73 H128 V88 H78 Z" fill="#000000"/>
+            <!-- B -->
+            <path d="M138 20 H175 C189 20 198 26 198 36 C198 43 192 49 183 52 C195 55 202 62 202 73 C202 84 191 88 175 88 H138 Z M158 34 V47 H173 C179 47 182 44 182 40 C182 36 179 34 173 34 Z M158 60 V74 H175 C181 74 185 71 185 67 C185 63 181 60 175 60 Z" fill="#000000"/>
+            <!-- E -->
+            <path d="M210 20 H260 V35 H230 V46 H255 V60 H230 V73 H260 V88 H210 Z" fill="#000000"/>
+            <!-- L -->
+            <path d="M270 20 H290 V72 H328 V88 H270 Z" fill="#000000"/>
+            <!-- A -->
+            <path d="M362 20 L331 88 H351 L362 62 L373 88 H393 L362 20 Z" fill="#000000"/>
+            <!-- G -->
+            <path d="M435 20 C410 20 396 38 396 54 C396 71 410 89 435 89 C449 89 461 82 465 72 V55 H432 V69 H449 V74 C445 77 440 78 435 78 C420 78 413 67 413 54 C413 41 420 31 435 31 C444 31 451 35 455 41 L467 31 C460 24 449 20 435 20 Z" fill="#000000"/>
+            <!-- E -->
+            <path d="M475 20 H525 V35 H495 V46 H520 V60 H495 V73 H525 V88 H475 Z" fill="#000000"/>
+            
+            <!-- Daraa Text (حجم مناسب مع مساحة عرض واسعة يضمن عدم قطع الكلمة) -->
+            <text x="525" y="122" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="28" fill="#000000" text-anchor="end">Daraa</text>
+        </svg>
+    </template>
 
     <script>
         function getProductDescription(name) {
@@ -348,7 +405,7 @@
             if (upper.includes("PAD")) 
                 return "وسادات قطنية ناعمة ومشبعة بمحلول علاج مركز، تعمل كخطوة أولى لتنقية البشرة، تقشير الخلايا الميتة بلطف، وترطيبها الفوري لتكون جاهزة لامتصاص العناية التالية.";
             if (upper.includes("HAIR") || upper.includes("SHAMPOO") || upper.includes("TONIC")) 
-                return "عناية علاجية متقدمة ومتكاملة لفروة الرأس والبصيلات، تغذي الجذور بعمق، تقلل التساقط بشكل ملحوظ، وتمنح الشعر قوة وكثافة ولمعاناً صحياً جذاباً.";
+                return "عناية علاجية متتقدمة ومتكاملة لفروة الرأس والبصيلات، تغذي الجذور بعمق، تقلل التساقط بشكل ملحوظ، وتمنح الشعر قوة وكثافة ولمعاناً صحياً جذاباً.";
             if (upper.includes("HAND") || upper.includes("FOOT") || upper.includes("BODY")) 
                 return "كريم مرطب غني بالمغذيات الطبيعية لليدين والجسم، يمتصه الجلد بسرعة فائقة ليعالج الجفاف والخشونة، ويترك البشرة ناعمة كالحرير ومعطرة برائحة لطيفة.";
             if (upper.includes("SOOTHING GEL")) 
@@ -447,28 +504,28 @@
             { id: "1087", code: "01087", name: "LEBELAGE PERFECT CARE NATURAL TONE UP SUN", price: "$17.19" },
             { id: "1088", code: "01088", name: "LEBELAGE PERFECT CARE MOISTURE AQUA SUN", price: "$17.19" },
             { id: "1089", code: "01089", name: "LEBELAGE PERFECT CARE CICA SOOTHING SUN", price: "$17.19" },
-            { id: "1090", code: "01090", name: "LEBELAGE PEARL SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1091", code: "01091", name: "LEBELAGE CUCUMBER SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1092", code: "01092", name: "LEBELAGE AQUA SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1093", code: "01093", name: "LEBELAGE SNAIL SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1094", code: "01094", name: "LEBELAGE CICA SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1095", code: "01095", name: "LEBELAGE PROPOLIS SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1096", code: "01096", name: "LEBELAGE CHARCOAL SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1097", code: "01097", name: "LEBELAGE ALOE SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1098", code: "01098", name: "LEBELAGE VITAMIN SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1099", code: "01099", name: "LEBELAGE GREEN TEA SOLUTION MASK PACK", price: "$1.49" },
-            { id: "1100", code: "01100", name: "LEBELAGE CAPSULE AQUA MASK PACK", price: "$1.99" },
-            { id: "1101", code: "01101", name: "LEBELAGE CAPSULE CICA MASK PACK", price: "$1.99" },
-            { id: "1102", code: "01102", name: "LEBELAGE CAPSULE VITAMIN MASK PACK", price: "$1.99" },
-            { id: "1103", code: "01103", name: "LEBELAGE CAPSULE COLLAGEN MASK PACK", price: "$1.99" },
+            { id: "1090", code: "01090", name: "LEBELAGE PEARL SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1091", code: "01091", name: "LEBELAGE CUCUMBER SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1092", code: "01092", name: "LEBELAGE AQUA SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1093", code: "01093", name: "LEBELAGE SNAIL SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1094", code: "01094", name: "LEBELAGE CICA SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1095", code: "01095", name: "LEBELAGE PROPOLIS SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1096", code: "01096", name: "LEBELAGE CHARCOAL SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1097", code: "01097", name: "LEBELAGE ALOE SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1098", code: "01098", name: "LEBELAGE VITAMIN SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1099", code: "01099", name: "LEBELAGE GREEN TEA SOLUTION MASK PACK", price: "$9.18" },
+            { id: "1100", code: "01100", name: "LEBELAGE CAPSULE AQUA MASK PACK", price: "$15.39" },
+            { id: "1101", code: "01101", name: "LEBELAGE CAPSULE CICA MASK PACK", price: "$15.39" },
+            { id: "1102", code: "01102", name: "LEBELAGE CAPSULE VITAMIN MASK PACK", price: "$15.39" },
+            { id: "1103", code: "01103", name: "LEBELAGE CAPSULE COLLAGEN MASK PACK", price: "$15.39" },
             { id: "1104", code: "01104", name: "LEBELAGE HIGH PROTECTION EXTREME SUN CREAM", price: "$7.34" },
             { id: "1105", code: "01105", name: "LEBELAGE HIGH PROTECTION LONG LASTING SUN CREAM", price: "$7.34" },
             { id: "1106", code: "01106", name: "LEBELAGE HIGH PROTECTION DAILY NO SEBUM SUN CREAM", price: "$7.34" },
             { id: "1107", code: "01107", name: "LEBELAGE REAL SENSATION PORE CLEANSING FOAM 1+1", price: "$21.51" },
             { id: "1108", code: "01108", name: "LEBELAGE REAL SENSATION BLEMISH CLEANSING FOAM 1+1", price: "$21.51" },
             { id: "1109", code: "01109", name: "LEBELAGE RICE CLEANSING FOAM SET (1+1)", price: "$9.86" },
-            { id: "1110", code: "01110", name: "LEBELAGE TRULY COLLAGEN AMPOULE MASK PACK", price: "$1.79" },
-            { id: "1111", code: "01111", name: "LEBELAGE TRULY GLUTATHIONE AMPOULE MASK PACK", price: "$1.79" },
+            { id: "1110", code: "01110", name: "LEBELAGE TRULY COLLAGEN AMPOULE MASK PACK", price: "$15.50" },
+            { id: "1111", code: "01111", name: "LEBELAGE TRULY GLUTATHIONE AMPOULE MASK PACK", price: "$15.50" },
             { id: "1112", code: "01112", name: "LEBELAGE RETINOL BUBBLE CHEWY FOAM", price: "$21.51" },
             { id: "1113", code: "01113", name: "LEBELAGE CENTELLA BUBBLE CHEWY FOAM", price: "$21.51" },
             { id: "1114", code: "01114", name: "LEBELAGE PANTHENOL BUBBLE CHEWY FOAM", price: "$21.51" },
@@ -517,9 +574,9 @@
             { id: "1157", code: "01157", name: "LEBELAGE TRULY CENTELLA SERUM", price: "$16.14" },
             { id: "1158", code: "01158", name: "LEBELAGE ALOE BUBBLE CHEWY FOAM", price: "$20.20" },
             { id: "1159", code: "01159", name: "LEBELAGE VITAMIN C + TUMERIC BUBBLE CHEWY FOAM", price: "$20.20" },
-            { id: "1160", code: "01160", name: "LEBELAGE MADECASSOSIDE SOLUTION MASK PACK", price: "$1.49" },
+            { id: "1160", code: "01160", name: "LEBELAGE MADECASSOSIDE SOLUTION MASK PACK", price: "$8.62" },
             { id: "1161", code: "01161", name: "LEBELAGE HEEYUL PREMIUM HANBANG 3 SET", price: "$86.53" },
-            { id: "1162", code: "01162", name: "LEBELAGE TRULY RETINOL AMPOULE MASK PACK", price: "$1.74" },
+            { id: "1162", code: "01162", name: "LEBELAGE TRULY RETINOL AMPOULE MASK PACK", price: "$24.25" },
             { id: "1163", code: "01163", name: "LEBELAGE CENTELLA MOISTURE 2 SET", price: "$37.52" },
             { id: "1164", code: "01164", name: "LEBELAGE TRULY PDRN HIGH CONCENTRATION SERUM", price: "$2.87" },
             { id: "1165", code: "01165", name: "LEBELAGE COLLAGEN + GREEN TEA MOISTURE 2 SET", price: "$37.52" },
@@ -545,8 +602,9 @@
         }
 
         const container = document.getElementById('catalogContainer');
+        const logoSvgContent = document.getElementById('logoTemplate').innerHTML;
 
-        // 1. صفحة الغلاف الأولى الملكية
+        // الغلاف الرئيسي
         const coverPage = document.createElement('div');
         coverPage.className = 'page cover-page';
         coverPage.innerHTML = `
@@ -560,20 +618,42 @@
             </div>
             
             <div class="cover-content">
-                <div class="cover-big-icon">⚜</div>
-                <h1 class="cover-title">LEBELAGE</h1>
+                ${logoSvgContent}
                 <div class="cover-korean">르베라쥬</div>
                 <div class="cover-divider">❖ ⚜ ❖</div>
-                <div class="cover-subtitle">Official Luxury Catalog</div>
+                <div class="cover-subtitle">OFFICIAL LUXURY CATALOG</div>
                 <p class="cover-desc">
-                    نُرحب بكم في عالم الجمال الكوري الراقي. يجمع هذا الكتالوج أحدث ابتكارات العناية الفاخرة بالبشرة، المصنوعة بعناية فائقة لتلبي تطلعات الأناقة الملكية والتميز الخالص.
+                    نُرحب بكم في عالم الجمال الكوري الراقي. يجمع هذا الكتالوج أحدث ابتكارات العناية الفاخرة بالبشرة، المصنوعة بعناية فائقة لتلبي تطلعات الأناقة والتميز.
                 </p>
                 <div class="cover-badge">إصدار حصري 2026</div>
+
+                <div class="contact-info-container">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot contact-icon icon-location"></i>
+                        <span>درعا - الحجاز مول - محل رقم 6</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-whatsapp contact-icon icon-whatsapp"></i>
+                        <span>واتساب: <a href="https://wa.me/963968544928" target="_blank">0968544928</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-facebook contact-icon icon-facebook"></i>
+                        <span>فيسبوك: <a href="https://www.facebook.com/share/1CV3yTRBGY/" target="_blank">Lebelage daraa</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-instagram contact-icon icon-instagram"></i>
+                        <span>إنستغرام: <a href="https://www.instagram.com/lebelage_daraa?stkn=MXRnbDltbjFjN2Vidg==" target="_blank">Lebelage_daraa</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope contact-icon icon-email"></i>
+                        <span>البريد: <a href="mailto:lebelage.daraa@gmail.com">lebelage.daraa@gmail.com</a></span>
+                    </div>
+                </div>
             </div>
         `;
         container.appendChild(coverPage);
 
-        // 2. صفحات المنتجات الداخلية
+        // الصفحات الداخلية
         rawData.forEach((item, index) => {
             const page = document.createElement('div');
             page.className = 'page';
@@ -590,7 +670,9 @@
                     <div class="page-border-inner"></div>
                 </div>
                 <div class="header">
-                    <div class="brand-title">LEBELAGE</div>
+                    <div style="transform: scale(0.65); transform-origin: top center; margin-bottom: -25px;">
+                        ${logoSvgContent}
+                    </div>
                     <div class="brand-korean">르베라쥬</div>
                     <div class="brand-sub">Luxury Beauty & Skincare</div>
                 </div>
@@ -616,7 +698,7 @@
             checkImage(document.getElementById(`img-${item.id}`), item.id);
         });
 
-        // 3. صفحة الخاتمة الأخيرة الملكية
+        // صفحة الخاتمة
         const endPage = document.createElement('div');
         endPage.className = 'page cover-page';
         endPage.innerHTML = `
@@ -630,8 +712,7 @@
             </div>
             
             <div class="cover-content">
-                <div class="cover-big-icon">⚜</div>
-                <h1 class="cover-title" style="font-size: 2rem;">THANK YOU</h1>
+                ${logoSvgContent}
                 <div class="cover-korean">감사합니다</div>
                 <div class="cover-divider">❖ ⚜ ❖</div>
                 <div class="cover-subtitle">LEBELAGE K-BEAUTY</div>
